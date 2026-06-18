@@ -1,0 +1,298 @@
+---
+title: "M02-Introduction to Data Science in R-Reflection"
+author: "Jungmin Woo"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-link: true
+    embed-resources: true
+    theme: flatly
+    code-overflow: wrap
+    code-tools: true
+    code-fold: true
+editor: visual
+execute: 
+  freeze: auto
+  warning: false
+---
+
+# Introduction
+
+This reflection essay documents what I learned in **Module 02: Introduction to Data Science in R**. The module covered a wide range of foundational topics — from the reproducibility crisis in science, to literate programming with Quarto, to the Tidyverse ecosystem, popular R packages, and the ongoing debate between R and Python. Each section below addresses the essay prompts in order.
+
+------------------------------------------------------------------------
+
+# Prompt 1: The Reproducibility Crisis {#sec-repro-crisis}
+
+> *Prompt: Summarize the video presentation about the reproducibility crisis (Step 1).*
+
+## Summary
+
+The video on the **reproducibility crisis** highlights a widespread and serious problem in modern science: a large proportion of published research findings cannot be independently replicated. Key points from the presentation include:
+
+-   A landmark survey found that **over 70% of researchers** have tried and failed to reproduce another scientist's experiments.
+-   The crisis spans many fields — including psychology, medicine, economics, and the social sciences.
+-   Common causes include **p-hacking**, **selective reporting**, **underpowered studies**, and **lack of open data and code**.
+-   The problem is not simply about fraud — even well-intentioned researchers can produce irreproducible results due to undocumented analytical decisions.
+
+::: callout-important
+## Why This Matters
+
+The reproducibility crisis undermines public trust in science and wastes enormous resources. It is not a peripheral issue — it strikes at the credibility of the scientific enterprise itself.
+:::
+
+## My Reflection
+
+The video was eye-opening in showing how systemic the problem is. It is not enough to publish results — the **full analytical pipeline** (data, code, and documentation) must be shared transparently so others can verify and build upon it.
+
+------------------------------------------------------------------------
+
+# Prompt 2: New Things I Learned About Reproducible Data Science {#sec-new-learning}
+
+> *Prompt: Summarize the new things you learned in this module about reproducible data science and literate coding.*
+
+## Reproducible Data Science
+
+Before this module, I thought reproducibility was mainly about sharing raw data. I now understand it involves a much broader set of practices:
+
+-   **Literate programming** — weaving code, output, and narrative into a single document
+-   **Version control** — using Git/GitHub to track changes and collaborate
+-   **Environment management** — documenting package versions so others can recreate the exact computational environment
+-   **Self-contained reports** — embedding all outputs into a single HTML file using `embed-resources: true`
+
+## Literate Coding with Quarto
+
+Quarto extends the principles of literate programming into a modern, multi-language framework. New things I learned include:
+
+-   Using `#|` chunk options to control figure size, captions, and labels
+-   Cross-referencing figures and sections with `@fig-` and `@sec-` prefixes
+-   Using callout blocks (`callout-note`, `callout-tip`, `callout-important`) to structure narrative
+-   Creating tabbed panels with `::: panel-tabset`
+-   Publishing directly to **GitHub Pages** from a Quarto project
+
+------------------------------------------------------------------------
+
+# Prompt 3: Reproducibility in My Field {#sec-my-field}
+
+> *Prompt: What do you think about the reproducibility crisis in your field? How can Quarto help address the concerns you have about reproducibility in your line of work?*
+
+## The Problem in My Field
+
+As a student in a data-intensive discipline, reproducibility is directly relevant to my work. Research papers and class projects often involve complex data wrangling and statistical analyses that are difficult to trace or verify when only the final results are reported.
+
+Some specific concerns I have:
+
+-   **Undocumented data cleaning steps** — small decisions made during data wrangling can drastically change results, yet they are rarely reported
+-   **Copy-paste workflows** — moving outputs from R/Excel into Word introduces errors and breaks the link between analysis and reporting
+-   **Version confusion** — without version control, it is easy to lose track of which version of an analysis produced which result
+
+## How Quarto Helps
+
+::: panel-tabset
+### Integrated Workflow
+
+Quarto eliminates the copy-paste problem by keeping code, output, and narrative **in the same document**. When the data changes, re-rendering the document automatically updates all figures and tables.
+
+### Transparency
+
+Every analytical decision — filtering criteria, variable transformations, model specifications — is documented in the same file as the results. This makes the full pipeline visible and auditable.
+
+### Collaboration
+
+With GitHub integration, Quarto documents can be version-controlled and shared, allowing collaborators and reviewers to inspect and reproduce the entire analysis from scratch.
+:::
+
+------------------------------------------------------------------------
+
+# Prompt 4: Impressive Quarto Features from Lectures {#sec-quarto-features}
+
+> *Prompt: Summarize the instructor's lectures about Quarto that you found impressive. Do you see yourself using Quarto every day for your job or studies?*
+
+## Features I Found Most Impressive
+
+::: callout-tip
+## Highlight
+
+The most impressive thing about Quarto is that it unifies writing, coding, and publishing into a single seamless workflow — something no previous tool did as elegantly.
+:::
+
+Among the many features covered in the lectures, the following stood out to me:
+
+1.  **Cross-referencing** — Being able to refer to @sec-repro-crisis or a figure using `@fig-` syntax and have Quarto auto-number everything is incredibly powerful for long documents.
+2.  **YAML customization** — The sheer range of output options (themes, TOC depth, code folding, section numbering) allows for highly professional reports with minimal extra effort.
+3.  **Callout blocks** — These provide a clean, structured way to highlight important information without disrupting the flow of the narrative.
+4.  **Panel tabsets** — A great way to present multiple perspectives or comparisons without cluttering the page.
+5.  **GitHub Pages publishing** — The ability to turn a `.qmd` file into a live, publicly accessible website in minutes is remarkable.
+
+## Will I Use Quarto Daily?
+
+**Yes, absolutely.** I can see myself using Quarto for:
+
+-   **Class notes** — Instead of taking notes in Word, a Quarto document lets me embed code examples and outputs directly
+-   **Homework and assignments** — Every assignment in this course is already Quarto-based
+-   **Research reports** — For any project involving data analysis, Quarto ensures the report is always in sync with the analysis
+-   **Presentations** — Quarto's `revealjs` format allows creating slide decks from the same `.qmd` file
+
+------------------------------------------------------------------------
+
+# Prompt 5: The Tidyverse Ecosystem {#sec-tidyverse}
+
+> *Prompt: Summarize what you learned in this module about the Tidyverse ecosystem in R. What can you do with R?*
+
+## What Is the Tidyverse?
+
+The **Tidyverse** is a collection of R packages designed around a consistent philosophy of tidy data and readable, pipe-based syntax. It was primarily developed by Hadley Wickham and is now maintained by Posit.
+
+The core packages and their roles:
+
+| Package   | Purpose                                               |
+|-----------|-------------------------------------------------------|
+| `ggplot2` | Data visualization using the grammar of graphics      |
+| `dplyr`   | Data manipulation (filter, select, mutate, summarize) |
+| `tidyr`   | Data reshaping (pivot_wider, pivot_longer)            |
+| `readr`   | Fast and friendly data import (CSV, TSV)              |
+| `tibble`  | Modern data frames with better printing               |
+| `purrr`   | Functional programming tools (map, reduce)            |
+| `stringr` | String manipulation                                   |
+| `forcats` | Tools for working with factors                        |
+
+## What Can You Do with R?
+
+R is a remarkably versatile language for data science. With the right packages, you can:
+
+-   **Import and clean** messy real-world data
+-   **Visualize** data with publication-quality charts
+-   **Model** data with statistical and machine learning methods
+-   **Report** findings in reproducible HTML, PDF, or Word documents
+-   **Automate** repetitive analytical workflows
+-   **Deploy** interactive web apps with Shiny
+
+::: callout-note
+## Note
+
+The Tidyverse's use of the pipe operator (`|>` or `%>%`) makes R code highly readable — you can read a data pipeline almost like a sentence in plain English.
+:::
+
+------------------------------------------------------------------------
+
+# Prompt 6: Two Packages Beyond the Tidyverse {#sec-packages}
+
+> *Prompt: Among the various packages introduced in the top 20 packages video, choose two packages beyond the Tidyverse ecosystem, base R, and Quarto that could enhance your job/career. Tell me why you think so.*
+
+## Package 1: `Shiny`
+
+**Shiny** is an R package that allows you to build interactive web applications directly from R — no HTML, CSS, or JavaScript knowledge required.
+
+**Why it matters for my career:**
+
+-   Data insights locked inside a static report reach a limited audience. A Shiny app lets non-technical stakeholders *explore* the data themselves through sliders, dropdowns, and dynamic charts.
+-   In research and policy contexts, interactive dashboards make findings far more accessible and actionable.
+-   Shiny apps can be deployed to the web via [shinyapps.io](https://www.shinyapps.io) for free, making it easy to share work publicly.
+
+## Package 2: `gt`
+
+**gt** (Grammar of Tables) is a package for creating beautiful, publication-ready tables in R — the table equivalent of `ggplot2`.
+
+**Why it matters for my career:**
+
+-   Most data analysis involves summarizing results in tables, yet default R tables are plain and difficult to read.
+-   `gt` allows fine-grained control over table formatting — cell colors, footnotes, column spanners, and more — making reports look truly professional.
+-   It integrates directly into Quarto HTML documents, meaning tables and reports stay in sync automatically.
+
+::: callout-tip
+## Tip
+
+`gt` and `ggplot2` together cover the two most common ways to present data — tables and charts — and both follow a grammar-based, layered design philosophy that makes them easy to learn together.
+:::
+
+------------------------------------------------------------------------
+
+# Prompt 7: R vs. Python — My Take {#sec-r-vs-python}
+
+> *Prompt: What is your take on the R vs. Python debate? Consider how Quarto enables people using R and Python in the same team to still collaborate.*
+
+## The Debate
+
+The R vs. Python debate is one of the most well-known rivalries in data science. In summary:
+
+::: panel-tabset
+### R's Strengths
+
+-   Built specifically for **statistical analysis** — the depth of statistical packages is unmatched
+-   **ggplot2** remains the gold standard for data visualization
+-   Strong in **academia**, public health, and social sciences
+-   Quarto and the Tidyverse make it excellent for **reproducible research**
+
+### Python's Strengths
+
+-   More **general-purpose** — can be used for web development, automation, and software engineering
+-   Dominant in **machine learning** and deep learning (scikit-learn, TensorFlow, PyTorch)
+-   Larger overall developer community
+-   Often preferred in **industry** and tech companies
+
+### The Reality
+
+Neither language is universally superior. The best choice depends on the task, team, and field. Many data scientists today are **bilingual**, using R for statistics and reporting, and Python for machine learning pipelines.
+:::
+
+## How Quarto Bridges the Gap
+
+A key insight from the video *"Hello Quarto: Share, Collaborate, Teach, Reimagine"* by Mine Çetinkaya-Rundel and Julia Stewart Lowndes is that **Quarto dissolves the R vs. Python divide** at the collaboration level.[^1]
+
+[^1]: Mine Çetinkaya-Rundel & Julia Stewart Lowndes, *Hello Quarto*, RStudio Conference 2022. Available at: https://www.youtube.com/watch?v=p7Hxu4coDl8
+
+Specifically:
+
+-   A single Quarto document can contain **both R and Python code chunks** side by side
+-   Teams where some members use R and others use Python can contribute to the **same `.qmd` file**
+-   The rendered output (HTML, PDF, slides) looks identical regardless of which language generated each piece of output
+-   This makes Quarto not just a tool for individual productivity, but a **platform for cross-language collaboration**
+
+> "Quarto is not an R tool. It's a scientific publishing system that happens to work beautifully with R — and Python, and Julia, and Observable."
+
+## My Position
+
+I believe the R vs. Python debate is becoming less relevant as tools like Quarto mature. Rather than picking a side, the more productive question is: *which tool is best for this specific task?* For statistical analysis and reproducible reporting in my field, R and Quarto are the natural choice. For machine learning tasks, I would reach for Python. Quarto ensures the outputs of both can live harmoniously in the same document.
+
+------------------------------------------------------------------------
+
+# Prompt 8: GitHub Repo and GitHub Pages
+
+> *Prompt: Push your QMD and HTML files to your GitHub repo. Publish your document to GitHub Pages.*
+
+::: callout-note
+## Submission Links
+
+-   **GitHub Repository:** *(Add your GitHub repo URL here)*
+-   **GitHub Pages URL:** *(Add your GitHub Pages URL here)*
+:::
+
+------------------------------------------------------------------------
+
+# Conclusion
+
+This module provided a strong foundation for reproducible data science. The reproducibility crisis is real and affects virtually every empirical field — but tools like **Quarto**, **Git**, and the **Tidyverse** give us a practical path toward more transparent, trustworthy, and collaborative science. I feel genuinely excited to integrate these tools into my daily workflow as a student and future researcher.
+
+------------------------------------------------------------------------
+
+# Appendix: Quarto Features Used {.appendix}
+
+The following formatting features were implemented in this document:
+
+1.  **YAML options**: `theme`, `toc`, `toc-depth`, `number-sections`, `code-fold`, `code-tools`, `code-overflow`, `embed-resources`
+2.  **Headings** at `#`, `##`, and `###` levels
+3.  **Bold** and *italic* text
+4.  **Blockquotes** (`>`) for every prompt
+5.  **Callout blocks**: `callout-note`, `callout-tip`, `callout-important`
+6.  **Panel tabsets** for multi-perspective comparisons
+7.  **Tables** for structured data summaries
+8.  **Cross-referencing** sections with `@sec-` syntax
+9.  **Footnote** in Prompt 7 citing the Hello Quarto video
+10. **Table of Contents** with depth control
+11. **Section numbering** via `number-sections: true`
+12. **Self-contained HTML** via `embed-resources: true`
+13. **Code folding** and **code tools** for clean presentation
+14. **Flatly theme** for professional visual styling
